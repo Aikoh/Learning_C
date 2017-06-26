@@ -12,10 +12,9 @@ int main(void){
     処理
 }
 ```
----
+---?code=helloworld.c
 
-
-### 2枚目のスライド
-
+###Hello,World!
+とりあえず、動かしてみよう！
 
 ---
