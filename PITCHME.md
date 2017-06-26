@@ -12,7 +12,7 @@ int main(void){
     処理
 }
 ```
----?code=helloworld.c
+---?code=helloWorld.c
 
 ###Hello,World!
 とりあえず、動かしてみよう！
