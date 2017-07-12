@@ -448,7 +448,7 @@ Lesson9 小テスト
 - 下記のプログラムを読み取りなさい。tri関数がvoid型にも関わらず、tri関数の結果を返す事ができている理由を述べなさい。
 
 ```
- #includ <stdio.h>
+ #include <stdio.h>
 
  void tri(int,int,int*);
 
