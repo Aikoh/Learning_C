@@ -450,7 +450,7 @@ Lesson9 小テスト
 ```
  #includ <stdio.h>
 
- void tri(int,int,int*;)
+ void tri(int,int,int*);
 
 int main(void){
   int value;
