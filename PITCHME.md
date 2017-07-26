@@ -471,7 +471,154 @@ void tri(int width, int hight, int *area){
 ### Lesson 10 ポインタと配列
 
 ---
+###前回の復讐　次の（例１）コードを読みなさい
+```
+#include <stdio.h> /*printf()関数を使う為、stdio.h　ファイルをインクルード*/
+
+void func(int *pvalue);	/* 関数funcのプロトタイプ宣言 */
+
+int main(void) { /* main関数 */
+    int value = 10; /*int型でvalueという変数を定義　初期値10を代入して初期化している*/
+    printf("&value = %p\n", &value);/*printf関数で&演算子を使って、変数valueのアドレスを出力する*/
+    func(&value);	/*関数funcにアドレスを渡す */
+    printf("value = %d\n", value);/*valueの値をコンソールに出力*/
+    return 0;/*main関数の処理終了*/
+}
+
+void func(int *pvalue)/*引数にint型の*pvalueポインタ型の変数を準備 */
+{
+    printf("pvalue = %p\n", pvalue);/*pvalueはポインタ型の為、アドレスを出力*/
+    *pvalue = 100;　　　	/* 通常変数モードに切り替えて100を代入 */
+    return;/*func関数処理終了*/
+}
+
+```
+---
+###問題１：
+```
+*pvalue = 100;
+```
+なぜ、さきほどの（例１）のコードでは、上記の代入をして、下記の出力をすると結果が100になるのか説明しなさい。
+```
+printf("value = %d\n", value)
+```
+
+---
 
 ### 配列型の引数
 
+```
+#include <stdio.h>
+
+int getave(int data[10]);
+
+int main(void) {
+
+    int ave, array[10] = { 1,2,3,4,5,6,7,8,9,10 };
+    ave = getave(array);
+    printf("%d\n", average);
+    return 0;
+}
+
+int getave(int data[])
+{
+    int i, ave = 0;
+    for (i = 0; i < 10; i++) {
+        average += data[i];
+    }
+    return average / 10;
+}
+```
 ---
+### 配列型の引数では、値渡しではなく、アドレスを渡している。
+```
+int data[]
+int *data
+```
+####どちらもアドレスを渡している為、利用できる。
+---
+```
+#include <stdio.h>
+
+int getave(int data[10]);
+
+int main(void) {
+
+    int ave, array[10] = { 1,2,3,4,5,6,7,8,9,10 };
+    ave = getave(array);
+    printf("%d\n", average);
+    return 0;
+}
+
+int getave(int *data)
+{
+    int i, ave = 0;
+    for (i = 0; i < 10; i++) {
+        printf("%d=%p\n",i, &data[i]);
+        average += data[i];
+    }
+    return average / 10;
+}
+```
+---
+### ポインタと配列の役割
+
+```
+#include <stdio.h>
+
+int main(void) {
+    int *data;
+    int i, ave = 0, array[10] = { 1,2,3,4,5,6,7,8,9,10 };
+
+    data = array;
+
+    for (i = 0; i < 10; i++){
+        ave += data[i];
+   }
+    printf("%d\n", ave / 10);
+    return 0;
+}
+```
+---
+### ポインタ演算
+
+```
+#include <stdio.h>
+
+int main(void) {
+    int *data;
+    int i, ave = 0, array[10] = { 1,2,3,4,5,6,7,8,9,10 };
+
+    data = array;
+
+    for (i = 0; i < 10; i++) {
+        ave += *(data + i);
+    }
+
+    printf("%d\n", ave / 10);
+    return 0;
+}
+```
+#### * (ポインタ変数　＋　要素番号)
+
+---
+
+```
+#include <stdio.h>
+
+int main(void) {
+    int *data;
+    int i, ave = 0, array[10] = { 1,2,3,4,5,6,7,8,9,10 };
+
+    data = array;
+
+    for (data = array; data != &array[10]; data++) {
+        ave += *data;
+    }
+
+    printf("%d\n", ave / 10);
+    return 0;
+}
+```
+---
+問題
