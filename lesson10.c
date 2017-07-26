@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include <stdlib.h>
 
 int deck(int,int);
@@ -24,7 +25,7 @@ int main(void) {
 int deck(int 〇〇, int 〇〇 ) {
 
     int i,A = 7000,B = 10000;//7000～10000の攻撃力
-    srand(10);
+    srand((unsigned)time(NULL));
     for (i = 0; i < 5; i++ ) {
        attack[i] =  rand() % (B - A + 1) + A;
        skill[i] = rand() % 4 + 1;
